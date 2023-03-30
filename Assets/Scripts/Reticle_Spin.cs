@@ -13,6 +13,6 @@ public class Reticle_Spin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 3, 0);
+        transform.Rotate(0, .555f, 0); //(60*33.3)/(60*60) 33 1/3 is the standard record speed
     }
 }

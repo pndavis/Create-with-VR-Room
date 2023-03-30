@@ -6,33 +6,37 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class currentAttach : MonoBehaviour
 {
     XRSocketInteractor socket;
-    public IXRSelectInteractable socketValue;
+    IXRSelectInteractable socketValue;
     public GameObject Record;
-    public int test = 0;
+    public GameObject Needle;
+    public AudioClip RecordScratch;
+
 
     // Start is called before the first frame update
     void Start()
     {
         socket = GetComponent<XRSocketInteractor>();
+        PlaceRecord();
     }
 
     // Update is called once per frame
-    void Update()
+    public void PlaceRecord()
     {
+        //if (socket.hasSelection)
 
-        if (socket.hasSelection)
-        {
-            socketValue = socket.GetOldestInteractableSelected();
-            Record = socketValue.transform.gameObject;
-            Record.GetComponent<AudioSource>().Play(); 
-        }
-        else
-        {
-            //Record.GetComponent<AudioSource>().Stop();
-        }
-
-        
+        socketValue = socket.GetOldestInteractableSelected();
+        Record = socketValue.transform.gameObject;
+        Record.GetComponent<AudioSource>().Play();
 
 
+        Needle.transform.rotation = Quaternion.Lerp(Needle.transform.rotation, Quaternion.AngleAxis(44, Vector3.up), 1f);
+
+
+    }
+    public void RemoveRecord()
+    {
+        Record.GetComponent<AudioSource>().Stop();
+        AudioSource.PlayClipAtPoint(RecordScratch, transform.position);
+        Needle.transform.rotation = Quaternion.identity; //Resets needle rotation;
     }
 }
