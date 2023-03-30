@@ -26,6 +26,7 @@ public class currentAttach : MonoBehaviour
 
         socketValue = socket.GetOldestInteractableSelected();
         Record = socketValue.transform.gameObject;
+        //Record.GetComponent<AudioSource>().volume = .5f;
         Record.GetComponent<AudioSource>().Play();
 
 
@@ -36,7 +37,7 @@ public class currentAttach : MonoBehaviour
     public void RemoveRecord()
     {
         Record.GetComponent<AudioSource>().Stop();
-        AudioSource.PlayClipAtPoint(RecordScratch, transform.position);
+        GetComponent<AudioSource>().Play();
         Needle.transform.rotation = Quaternion.identity; //Resets needle rotation;
     }
 }

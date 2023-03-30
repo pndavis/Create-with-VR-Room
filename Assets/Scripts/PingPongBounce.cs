@@ -21,7 +21,7 @@ public class PingPongBounce : MonoBehaviour
     {
         //code to get the velocity magnitude and convert to volume sound
         volumeSound = rb.velocity.magnitude; //maginitude converts velocity (Vector3) to a float. Refer to Unity API for more info
-        Debug.Log(volumeSound); //optional test
+        //Debug.Log(volumeSound); 
 
         audioSource.PlayOneShot(bounceSound, volumeSound);
 
