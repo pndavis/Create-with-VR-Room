@@ -8,10 +8,12 @@ public class ToggleParticle : MonoBehaviour
 {
     private ParticleSystem currentParticleSystem = null;
     private MonoBehaviour currentOwner = null;
+    private AudioSource sound = null;
 
     private void Awake()
     {
         currentParticleSystem = GetComponent<ParticleSystem>();
+        sound = GetComponent<AudioSource>();
     }
 
     public void Play()
@@ -22,6 +24,19 @@ public class ToggleParticle : MonoBehaviour
     public void Stop()
     {
         currentParticleSystem.Stop();
+    }
+    public void Flip()
+    {
+        if (currentParticleSystem.isEmitting)
+        {
+            currentParticleSystem.Stop();
+            sound.Stop();
+        }
+        else
+        {
+            currentParticleSystem.Play();
+            sound.Play();
+        }
     }
 
     public void PlayWithExclusivity(MonoBehaviour owner)

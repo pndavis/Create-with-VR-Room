@@ -48,4 +48,9 @@ public class Photo : MonoBehaviour
         applyPhysics.EnablePhysics();
         transform.parent = null;
     }
+
+    public void detachFromParent()
+    {
+        transform.parent = null;
+    }
 }
