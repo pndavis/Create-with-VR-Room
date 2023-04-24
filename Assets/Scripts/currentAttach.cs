@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,14 +26,17 @@ public class currentAttach : MonoBehaviour
         //if (socket.hasSelection)
 
         socketValue = socket.GetOldestInteractableSelected();
-        Record = socketValue.transform.gameObject;
-        //Record.GetComponent<AudioSource>().volume = .5f;
-        Record.GetComponent<AudioSource>().Play();
-
+        try
+        {
+            Record = socketValue.transform.gameObject;
+            Record.GetComponent<AudioSource>().Play();
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log(e);
+        }
 
         Needle.transform.rotation = Quaternion.Lerp(Needle.transform.rotation, Quaternion.AngleAxis(44, Vector3.up), 1f);
-
-
     }
     public void RemoveRecord()
     {
