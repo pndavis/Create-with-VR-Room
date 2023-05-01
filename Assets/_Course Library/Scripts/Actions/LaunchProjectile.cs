@@ -16,10 +16,10 @@ public class LaunchProjectile : MonoBehaviour
     [Tooltip("The speed at which the projectile is launched")]
     public float launchSpeed = 500.0f;
 
-    public int ammo = 100;
-    public GameObject ammoCounter;
-    public AudioClip launchSound;
-    public AudioClip emptySound;
+    public int ammo = 10;
+    public GameObject ammoCounter = null;
+    public AudioClip launchSound = null;
+    public AudioClip emptySound = null;
 
     public void Fire()
     {
