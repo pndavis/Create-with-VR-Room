@@ -8,7 +8,7 @@ public class currentAttach : MonoBehaviour
 {
     XRSocketInteractor socket;
     IXRSelectInteractable socketValue;
-    public GameObject Record;
+    public GameObject Record = null;
     public GameObject Needle;
     public AudioClip RecordScratch;
 
@@ -17,14 +17,12 @@ public class currentAttach : MonoBehaviour
     void Start()
     {
         socket = GetComponent<XRSocketInteractor>();
-        PlaceRecord();
+        //PlaceRecord();
     }
 
     // Update is called once per frame
     public void PlaceRecord()
     {
-        //if (socket.hasSelection)
-
         socketValue = socket.GetOldestInteractableSelected();
         try
         {
